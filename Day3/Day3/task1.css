@@ -1,0 +1,77 @@
+
+    body {
+      font-family: Arial, sans-serif;
+      background: gray;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .row {
+      display: flex;
+      gap: 24px;
+    }
+
+    .card {
+      border-radius: 12px;
+      padding: 22px 24px;
+      color: white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .purple {
+      background: purple;
+      flex: 2; 
+    }
+
+    .blue {
+      background: blue;
+      flex: 1;
+    }
+
+    .dark {
+      background: black;
+      flex: 2;
+    }
+
+    .light {
+      background: white;
+      color: black;
+      flex: 1;
+    }
+
+    .kira {
+      flex: 1.5; 
+    }
+
+    .card h4 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+
+    .card p {
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .name {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .verified {
+      font-size: 12px;
+      opacity: 0.75;
+    }

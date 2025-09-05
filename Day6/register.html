@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>User Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #4c93af;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #470c95;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>User Registration</h2>
+    <form id="registerForm" onsubmit="return false;">
+      <label>Username:</label>
+      <input type="text" id="username">
+      <div id="usernameError" class="error"></div>
+
+      <label>Email:</label>
+      <input type="text" id="email">
+      <div id="emailError" class="error"></div>
+
+      <label>Password:</label>
+      <input type="password" id="password">
+      <div id="passwordError" class="error"></div>
+
+      <label>Confirm Password:</label>
+      <input type="password" id="confirmPassword">
+      <div id="confirmError" class="error"></div>
+
+      <button type="submit" onclick="validateForm()">Register</button>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      document.getElementById("usernameError").innerHTML = "";
+      document.getElementById("emailError").innerHTML = "";
+      document.getElementById("passwordError").innerHTML = "";
+      document.getElementById("confirmError").innerHTML = "";
+
+      var username = document.getElementById("username").value.trim();
+      var email = document.getElementById("email").value.trim();
+      var password = document.getElementById("password").value;
+      var confirm = document.getElementById("confirmPassword").value;
+      var valid = true;
+
+      if (username === "") {
+        document.getElementById("usernameError").innerHTML = "Username cannot be empty";
+        valid = false;
+      } else {
+        for (var i = 0; i < username.length; i++) {
+          var ch = username[i];
+          if (!((ch >= "A" && ch <= "Z") || (ch >= "a" && ch <= "z") || ch === " ")) {
+            document.getElementById("usernameError").innerHTML = "Only letters and spaces allowed";
+            valid = false; break;
+          }
+        }
+      }
+
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+if (!emailPattern.test(email)) {
+  document.getElementById("emailError").innerHTML = "Invalid email format";
+  valid = false;
+}
+
+      if (password.length < 4 || password.length > 12) {
+        document.getElementById("passwordError").innerHTML = "Password must be 4-12 characters";
+        valid = false;
+      }
+      if (password.indexOf(" ") !== -1) {
+        document.getElementById("passwordError").innerHTML = "Password cannot contain spaces";
+        valid = false;
+      }
+
+      if (password !== confirm) {
+        document.getElementById("confirmError").innerHTML = "Passwords do not match";
+        valid = false;
+      }
+
+      if (valid) {
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+        let exists = users.find(u => u.username.toLowerCase() === username.toLowerCase());
+        if (exists) {
+          document.getElementById("usernameError").innerHTML = "Username already exists!";
+          return;
+        }
+        users.push({ username, email, password });
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("Registration successful! Please login.");
+        window.location.href = "login.html";
+      }
+    }
+  </script>
+</body>
+
+</html>

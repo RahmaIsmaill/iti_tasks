@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flash Sale Countdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f9f9f9, #e3f2fd);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      width: 350px;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    #timer {
+      font-size: 32px;
+      font-weight: bold;
+      color: #1976d2;
+      margin: 20px 0;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #444;
+    }
+
+    #message a {
+      color: #1976d2;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    #message a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Flash Sale Countdown</h2>
+    <div id="timer">0:00</div>
+    <div id="message"></div>
+    <button onclick="resetCountdown()">Reset</button>
+  </div>
+
+  <script>
+    var timeLeft = 10;  
+
+
+    function startCountdown() {
+      var minutes = Math.floor(timeLeft / 60);
+      var seconds = timeLeft % 60;
+
+      document.getElementById("timer").innerHTML =
+        minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+      if (timeLeft > 0) {
+        timeLeft--;
+        // startCountdown();
+        setTimeout(startCountdown, 1000);
+      } else {
+        document.getElementById("message").innerHTML =
+          "Flash Sale has started! <a href='https://www.amazon.com' target='_blank'>Shop now</a>";
+
+        setTimeout(function() {
+          window.location.href = "https://www.amazon.com";
+        }, 2000);
+      }
+    }
+
+    function resetCountdown() {
+      timeLeft = 10;
+      document.getElementById("message").innerHTML = "";
+      startCountdown();
+    }
+
+    startCountdown(); 
+  </script>
+</body>
+</html>

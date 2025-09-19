@@ -1,0 +1,12 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+<h2>Fantasy Books</h2>
+<ul>
+  {% for book in books %}
+    <li>{{ book.title }} - {{ book.author.name }}</li>
+  {% empty %}
+    <li>No fantasy books available.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

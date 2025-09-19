@@ -7,21 +7,10 @@
 
     <form method="post">
         {% csrf_token %}
-        <p>
-            <label for="id_title">Title:</label><br>
-            <input type="text" name="title" id="id_title" required>
-        </p>
-        <p>
-            <label for="id_author">Author:</label><br>
-            <select name="author" id="id_author" required>
-                {% for author in authors %}
-                <option value="{{ author.id }}">{{ author.name }}</option>
-                {% endfor %}
-            </select>
-        </p>
+        {{ form.as_p }}
         <p>
             <button type="submit">Add Book</button>
-            <a href="{% url 'books_list' %}">Cancel</a>
+            <a href="{% url 'list_books' %}">Cancel</a>
         </p>
     </form>
 {% endblock %}

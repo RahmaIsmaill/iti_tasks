@@ -3,14 +3,20 @@
 {% block title %}Book Details{% endblock %}
 
 {% block content %}
-    <h1>Book Details</h1>
+    <h1>📖 Book Details</h1>
 
     {% if book %}
         <h2>{{ book.title }}</h2>
         <p><strong>Author:</strong> {{ book.author.name }}</p>
-        <p><strong>Published Date:</strong> {{ book.published_date }}</p>
-        <p><a href="{% url 'books_list' %}">Back to list</a></p>
+        {% if book.published_date %}
+            <p><strong>Published Date:</strong> {{ book.published_date }}</p>
+        {% endif %}
+        <p>
+            <a href="{% url 'edit_book' book.id %}">✏️ Edit</a> |
+            <a href="{% url 'delete_book' book.id %}">🗑️ Delete</a> |
+            <a href="{% url 'books_list' %}">⬅️ Back to list</a>
+        </p>
     {% else %}
-        <p>Book not found.</p>
+        <p style="color:red;">❌ Book not found.</p>
     {% endif %}
 {% endblock %}

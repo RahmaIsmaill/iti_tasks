@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome to Books App</h1>
-    <ul>
-        <li><a href="/list/">Books List</a></li>
-        <li><a href="/detail/">Book Detail</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/contact/">Contact</a></li>
-    </ul>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Welcome to Books App</h2>
+<p>This is the home page.</p>
+{% endblock %}

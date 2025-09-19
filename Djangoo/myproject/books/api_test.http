@@ -1,0 +1,66 @@
+### Get all books
+GET http://127.0.0.1:8000/api/books/
+Accept: application/json
+
+### Get one book
+GET http://127.0.0.1:8000/api/books/20/
+Accept: application/json
+
+### Add new book
+POST http://127.0.0.1:8000/api/books/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "My First API Book",
+  "author": "Ali",
+  "genre": "fiction"
+}
+
+### Update book
+PUT http://127.0.0.1:8000/api/books/20/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Updated Book",
+  "author": "rahmah",
+  "genre": "fantasy"
+}
+
+### Delete book
+DELETE http://127.0.0.1:8000/api/books/24/
+Accept: application/json
+
+
+### Get all authors
+GET http://127.0.0.1:8000/api/authors/
+Accept: application/json
+
+### Get one author
+GET http://127.0.0.1:8000/api/authors/3/
+Accept: application/json
+
+### Add new author
+POST http://127.0.0.1:8000/api/authors/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Ahmed",
+  "email": "Ahmed@example.com"
+}
+
+### Update author
+PUT http://127.0.0.1:8000/api/authors/2/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Rahmahhhhh",
+  "email": "rahma.ismail@example.com"
+}
+
+### Delete author
+DELETE http://127.0.0.1:8000/api/authors/4/
+Accept: application/json

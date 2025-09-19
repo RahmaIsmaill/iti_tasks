@@ -1,0 +1,32 @@
+### -------------------- Books --------------------
+
+### Get all books
+GET http://127.0.0.1:8000/book/api/books/
+
+### Get single book (id = 1)
+GET http://127.0.0.1:8000/book/api/books/1/
+
+### Add new book
+POST http://127.0.0.1:8000/book/api/books/
+Content-Type: application/json
+
+{
+  "title": "New Book Title",
+  "author": 1,
+  "genre": "fiction"
+}
+
+### Update book (id = 1)
+PUT http://127.0.0.1:8000/book/api/books/1/
+Content-Type: application/json
+
+{
+  "title": "Updated Book Title",
+  "author": 1,
+  "genre": "fantasy"
+}
+
+### Delete book (id = 1)
+DELETE http://127.0.0.1:8000/book/api/books/1/
+
+
